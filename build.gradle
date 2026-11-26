@@ -58,6 +58,21 @@ repositories {
 loom {
 	splitEnvironmentSourceSets()
 
+	runs {
+		client {
+			client()
+			programArgs "--username", "Dev1"
+			ideConfigGenerated true
+		}
+		client2 {
+			client()
+			configName = "Minecraft Client 2"
+			runDir "run2"
+			programArgs "--username", "Dev2"
+			ideConfigGenerated true
+		}
+	}
+
 	mods {
 		"quoicouorigins" {
 			sourceSet sourceSets.main

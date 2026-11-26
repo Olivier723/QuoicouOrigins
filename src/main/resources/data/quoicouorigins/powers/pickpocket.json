@@ -1,0 +1,9 @@
+{
+  "type": "quoicouorigins:pickpocket",
+  "cooldown": 0,
+  "range": 3.0,
+  "must_be_behind": false,
+  "detection_chance": 0.25,
+  "name": "Doigts agiles",
+  "description": "Accroupi et dans le dos d'un joueur, faites un clic droit pour fouiller ses poches."
+}

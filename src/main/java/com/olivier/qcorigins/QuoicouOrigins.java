@@ -1,5 +1,7 @@
 package com.olivier.qcorigins;
 
+import com.olivier.qcorigins.pickpocket.PickpocketHandler;
+import com.olivier.qcorigins.power.ModPowers;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.util.Identifier;
@@ -21,7 +23,10 @@ public class QuoicouOrigins implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 
-		LOGGER.info("Hello Fabric world!");
+		LOGGER.info("QuoicouOrigins initializing!");
+
+		ModPowers.register();
+		PickpocketHandler.register();
 	}
 
 	public static Identifier id(String path) {
