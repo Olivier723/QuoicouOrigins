@@ -1,9 +1,20 @@
 {
-  "type": "quoicouorigins:pickpocket",
-  "cooldown": 0,
-  "range": 3.0,
-  "must_be_behind": false,
-  "detection_chance": 0.25,
-  "name": "Doigts agiles",
-  "description": "Accroupi et dans le dos d'un joueur, faites un clic droit pour fouiller ses poches."
+  "type": "apoli:action_on_entity_use",
+  "hand": "main_hand",
+  "condition": {
+    "type": "apoli:sneaking"
+  },
+  "bientity_condition": {
+    "type": "apoli:and",
+    "conditions": [
+      { "type": "apoli:target_condition", "condition": { "type": "apoli:entity_type", "entity_type": "minecraft:player" } },
+      { "type": "apoli:distance", "comparison": "<=", "compare_to": 3.0 }
+    ]
+  },
+  "bientity_action": {
+    "type": "quoicouorigins:open_pickpocket",
+    "hotbar_search_time": 140,
+    "inventory_search_time": 40,
+    "steal_sound": "minecraft:item.armor.equip_leather"
+  }
 }

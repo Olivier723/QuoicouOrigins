@@ -1,0 +1,5 @@
+{
+  "power.quoicouorigins.pickpocket.name": "Pickpocket",
+  "power.quoicouorigins.pickpocket.description": "Vole des objets des autres joueurs. Vilain petit voleur.",
+  "power.quoicouorigins.pickpocket.victim_inventory": "Poches de %s"
+}

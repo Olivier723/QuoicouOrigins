@@ -7,6 +7,9 @@ import net.minecraft.server.network.ServerPlayerEntity;
 
 public class TargetInventoryWrapper implements Inventory {
 
+    private static final int OFFHAND_SLOT = 36;
+    private static final int INVENTORY_SIZE = 37;
+
     private final ServerPlayerEntity target;
 
     public TargetInventoryWrapper(ServerPlayerEntity target) {
@@ -16,18 +19,19 @@ public class TargetInventoryWrapper implements Inventory {
     // Les slots 0-8 sont la barre d'action et 9-35 l'inventaire principal.
     // Ce décalage affiche la barre d'action en bas de la grille, comme en jeu.
     private int map(int slot) {
+        if (slot == OFFHAND_SLOT) return 40; // Slot 40 => Main secondaire
         return (slot + 9) % 36;
     }
 
     @Override
     public int size() {
-        return 36;
+        return INVENTORY_SIZE;
     }
 
     @Override
     public boolean isEmpty() {
-        for (int i = 0; i < 36; i++) {
-            if (!target.getInventory().getStack(i).isEmpty()) return false;
+        for (int i = 0; i < this.size(); i++) {
+            if (!target.getInventory().getStack(map(i)).isEmpty()) return false;
         }
         return true;
     }

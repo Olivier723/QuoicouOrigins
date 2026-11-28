@@ -1,11 +1,14 @@
 package com.olivier.qcorigins;
 
-import com.olivier.qcorigins.pickpocket.PickpocketHandler;
-import com.olivier.qcorigins.power.ModPowers;
+import com.olivier.qcorigins.pickpocket.PickpocketAction;
+import com.olivier.qcorigins.screens.ModScreens;
+import io.github.apace100.apoli.power.factory.action.ActionFactory;
+import io.github.apace100.apoli.registry.ApoliRegistries;
 import net.fabricmc.api.ModInitializer;
-
+import net.minecraft.entity.Entity;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-
+import net.minecraft.util.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,8 +28,10 @@ public class QuoicouOrigins implements ModInitializer {
 
 		LOGGER.info("QuoicouOrigins initializing!");
 
-		ModPowers.register();
-		PickpocketHandler.register();
+		ActionFactory<Pair<Entity, Entity>> factory = PickpocketAction.createFactory();
+		Registry.register(ApoliRegistries.BIENTITY_ACTION, factory.getSerializerId(), factory);
+		ModScreens.initialize();
+
 	}
 
 	public static Identifier id(String path) {
